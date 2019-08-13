@@ -55,3 +55,43 @@ def about(request, name, age):
         'age': age
     }
     return render(request, 'about.html', context)
+
+def isitgwangbok(request):
+    today = datetime.datetime.now()
+    if today.month == 8 and today.day == 15:
+        result = '예'
+    else:
+        result = '아니오'
+    context = {
+        'isit': result,
+    }
+    return render(request, 'isitgwangbok.html', context)
+
+def ping(request):
+    return render(request, 'ping.html')
+
+def pong(request):
+    # 사용자가 넘겨주는 값 받아오기
+    print(request.GET) 
+    # QueryDict {'data': '안녕하세요'}
+    data = request.GET.get('data')
+    context = {
+        'data': data
+    }
+    return render(request, 'pong.html', context)
+
+def signup(request):
+    return render(request, 'signup.html')
+
+def signup_result(request):
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    password_confirm = request.POST.get('password_confirm')
+    if password == password_confirm:
+        result = '{}님, 회원가입을 완료하였습니다.'.format(username)
+    else:
+        result = '패스워드가 일치하지 않습니다.'
+    context = {
+        'result': result
+    }
+    return render(request, 'signup_result.html', context)
