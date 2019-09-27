@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>ARTII</h1>
+<form action="/services/artii_result/">
+  <input type="text" name="name" placeholder="변환할 단어(알파벳만 가능)">
+  <select name="fontname" id="fontname">
+    <option value="rounded">rounded</option>
+    <option value="speed">speed</option>
+    <option value="alligator">alligator</option>
+    <option value="goofy">goofy</option>
+    <option value="type_set">type_set</option>
+    <option value="starwars">starwars</option>
+    
+  </select>
+  <input type="submit" value="만들기!">
+</form>
+{% endblock%}
